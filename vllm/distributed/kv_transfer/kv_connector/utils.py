@@ -6,6 +6,7 @@ KV cache helper for store.
 from collections import defaultdict
 from collections.abc import Sequence
 from concurrent.futures import CancelledError, Future
+from dataclasses import dataclass
 from typing import Optional, cast
 
 import torch
@@ -197,3 +198,10 @@ class KVOutputAggregator:
             output_future.add_done_callback(make_callback(i))
 
         return result_future
+
+
+@dataclass
+class KVConnectorOutput:
+    # [req_ids]
+    finished_sending: Optional[set[str]] = None
+    finished_recving: Optional[set[str]] = None
