@@ -11,15 +11,15 @@ def read_prompts():
     return [
         context + "Hello, my name is",
         context + "The capital of France is",
-        context2 + "Your name is",
-        context2 + "The capital of China is",
+        #context2 + "Your name is",
+        #context2 + "The capital of China is",
     ]
 
 
 def main():
     prompts = read_prompts()
 
-    sampling_params = SamplingParams(temperature=0, top_p=0.95, max_tokens=1)
+    sampling_params = SamplingParams(temperature=0, top_p=0.95, max_tokens=1, seed=42)
 
     llm = LLM(
         model="meta-llama/Llama-3.2-1B-Instruct",
